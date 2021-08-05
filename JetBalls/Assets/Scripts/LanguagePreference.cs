@@ -29,5 +29,4 @@ public class LanguagePreference : MonoBehaviour
             PlayerPrefs.SetInt(prefKey, m_value);
         }
     }
-
 }
