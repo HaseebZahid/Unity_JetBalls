@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : MenuBase
 {
     public enum MainMenuButton { play, settings, info, review}
-    
+
+    public GameObject mainMenuOverlay;
+
+    public override void SwitchState(bool stateEnable)
+    {
+        mainMenuOverlay.SetActive(stateEnable);
+        gameObject.SetActive(stateEnable);
+    }
+
     public void HandleOnClick (int mainMenuButton)
     {
         switch((MainMenuButton) mainMenuButton)
