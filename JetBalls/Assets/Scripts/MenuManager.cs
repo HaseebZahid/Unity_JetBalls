@@ -9,4 +9,10 @@ public class MenuManager : MonoBehaviour
     [LabeledArrayAttribute(typeof(MenuStates))]
     public MenuBase[] allMenus;
 
+    public static MenuManager instance;
+    private void Awake()
+    {
+        instance = this;
+    }
+
 }

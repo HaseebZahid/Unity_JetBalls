@@ -11,5 +11,4 @@ public class ImageUpdaterOnLanguagePreference : MonoBehaviour
     {
         GetComponent<Image>().sprite = images[LanguagePreference.instance.langValue];
     }
-
 }
