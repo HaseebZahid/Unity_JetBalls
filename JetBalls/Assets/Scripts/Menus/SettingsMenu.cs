@@ -9,6 +9,10 @@ public class SettingsMenu : MenuBase
 
     public Sprite soundOn, soundOff;
 
+    public Image engIcon, rusIcon, spanIcon;
+
+    public Sprite engOn, engOff, rusOn, rusOff, spanOn, spanOff;
+
     public override void SwitchState(bool stateEnable)
     {
         gameObject.SetActive(stateEnable);
@@ -20,6 +24,11 @@ public class SettingsMenu : MenuBase
     }
 
     public void ToggleSound()
+    {
+
+    }
+
+    public void SetLanguagePreference()
     {
 
     }
