@@ -19,12 +19,15 @@ public class MainMenu : MenuBase
         switch((MainMenuButton) mainMenuButton)
         {
             case MainMenuButton.play:       //0
+                MenuManager.instance.SwitchToMenu(MenuState.gameplay);
                 break;
             case MainMenuButton.settings:   //1
+                MenuManager.instance.SwitchToMenu(MenuState.settings);
                 break;
             case MainMenuButton.info:       //2
                 break;
             case MainMenuButton.review:     //3
+                MenuManager.instance.SwitchToMenu(MenuState.review);
                 break;
         }
     }

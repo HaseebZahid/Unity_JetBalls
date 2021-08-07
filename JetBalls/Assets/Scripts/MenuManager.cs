@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum MenuState { mainmenu, gameplay, gamelose, settings, review}
 
@@ -19,11 +17,18 @@ public class MenuManager : MonoBehaviour
 
     public void SwitchToPreviousMenu()
     {
-
+        SwitchToMenu(prevMenuState);
     }
 
-    public void SwitchToMenu(MenuState newMenu)
+    public void SwitchToMenu(MenuState newMenuState)
     {
+        prevMenuState = currMenuState;
+        currMenuState = newMenuState;
+        
+        if (!(prevMenuState == MenuState.mainmenu && currMenuState == MenuState.gameplay))
+            allMenus[(int)prevMenuState].SwitchState(false);
+
+        allMenus[(int)currMenuState].SwitchState(true);
 
     }
 }
