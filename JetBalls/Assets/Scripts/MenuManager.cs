@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MenuStates { mainmenu, gameplay, gamelose, settings, review}
+public enum MenuState { mainmenu, gameplay, gamelose, settings, review}
 
 public class MenuManager : MonoBehaviour
 {
-    [LabeledArrayAttribute(typeof(MenuStates))]
+    [LabeledArrayAttribute(typeof(MenuState))]
     public MenuBase[] allMenus;
 
     public static MenuManager instance;
@@ -15,4 +15,15 @@ public class MenuManager : MonoBehaviour
         instance = this;
     }
 
+    MenuState prevMenuState, currMenuState;
+
+    public void SwitchToPreviousMenu()
+    {
+
+    }
+
+    public void SwitchToMenu(MenuState newMenu)
+    {
+
+    }
 }
