@@ -25,6 +25,7 @@ public class MainMenu : MenuBase
                 MenuManager.instance.SwitchToMenu(MenuState.settings);
                 break;
             case MainMenuButton.info:       //2
+                Application.OpenURL("https://docs.google.com/document/d/1_cQqe4jsshbcO2mG5JU7AfJAjyE3QcW06StTZ-yJU6Y/edit?usp=sharing");
                 break;
             case MainMenuButton.review:     //3
                 MenuManager.instance.SwitchToMenu(MenuState.review);

@@ -11,6 +11,7 @@ public class ImageUpdaterOnLanguagePreference : MonoBehaviour
     void OnEnable()
     {
         GetComponent<Image>().sprite = images[LanguagePreference.instance.langValue];
+        GetComponent<Image>().SetNativeSize();
     }
 
     private void Update()
@@ -18,6 +19,7 @@ public class ImageUpdaterOnLanguagePreference : MonoBehaviour
         if (runInUpdate)
         {
             GetComponent<Image>().sprite = images[LanguagePreference.instance.langValue];
+            GetComponent<Image>().SetNativeSize();
         }
     }
 }
