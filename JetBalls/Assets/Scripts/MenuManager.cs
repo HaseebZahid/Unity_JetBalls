@@ -25,7 +25,7 @@ public class MenuManager : MonoBehaviour
         prevMenuState = currMenuState;
         currMenuState = newMenuState;
         
-        if (!(prevMenuState == MenuState.mainmenu && currMenuState == MenuState.gameplay))
+        //if ((prevMenuState == MenuState.mainmenu && currMenuState == MenuState.gameplay))
             allMenus[(int)prevMenuState].SwitchState(false);
 
         allMenus[(int)currMenuState].SwitchState(true);
