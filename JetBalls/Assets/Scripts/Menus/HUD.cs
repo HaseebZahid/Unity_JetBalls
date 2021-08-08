@@ -1,8 +1,6 @@
 ﻿
 public class HUD : MenuBase
 {
-    public static HUD instance;
-
     public UnityEngine.UI.Text scoreText;
 
     public override void SwitchState(bool stateEnable)

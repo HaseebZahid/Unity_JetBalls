@@ -27,6 +27,11 @@ public abstract class Tween : MonoBehaviour
     [SerializeField] protected float elapsedTime = 0f;
     [SerializeField] protected bool isPlaying = false;
 
+    public bool IsPlaying
+    {
+        get { return isPlaying; }
+    }
+
     protected void OnEnable()
     {
         if (playOnEnable)

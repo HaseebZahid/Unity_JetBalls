@@ -8,6 +8,8 @@ public class BallMovement : MonoBehaviour
     public TweenRectTransformPosition posTweener;
     public TweenRotation tweenRotation;
 
+    public TweenScale effectsTween;
+
     public Vector2 startPos = new Vector2(150, -30);
 
     private void Awake()
@@ -22,6 +24,17 @@ public class BallMovement : MonoBehaviour
 
     }
 
+    public void HandleInput()
+    {
+        if (!GameManager.instance.isPlaying)
+            return;
+
+        if (posTweener.IsPlaying)
+            return;
+
+        posTweener.StartTween();
+    }
+
     void OnTriggerEnter2D(Collider2D col)
     {
         Debug.Log(gameObject.name + " collided with " + col.name);
@@ -29,6 +42,7 @@ public class BallMovement : MonoBehaviour
         if (col.name.Contains("Obstacle_"))
         {
             GameManager.instance.GameOver();
+            effectsTween.StartTween();
         }
     }
 
@@ -36,6 +50,8 @@ public class BallMovement : MonoBehaviour
     {
         posTweener.StopTween();
         tweenRotation.StartTween();
+        effectsTween.StopTween();
+        effectsTween.transform.localScale = Vector3.zero;
         GetComponent<RectTransform>().anchoredPosition = startPos;
     }
 

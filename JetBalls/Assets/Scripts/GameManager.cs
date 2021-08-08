@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public HUD hud;
+
     public SoundState soundState;
 
     public ObjectSpawner[] objSpawners;
@@ -20,10 +22,14 @@ public class GameManager : MonoBehaviour
         soundState = new SoundState();
     }
 
+    public float currScore = 0f;
+
     public void StartGame()
     {
         Time.timeScale = 1f;
         isPlaying = true;
+        hud.UpdateScore(0);
+        currScore = 0f;
 
         foreach (ObjectSpawner objSpawner in objSpawners)
         {
@@ -56,6 +62,66 @@ public class GameManager : MonoBehaviour
         MenuManager.instance.SwitchToMenu(MenuState.gamelose);
     }
 
+    private void Update()
+    {
+        if (!isPlaying)
+            return;
+
+        if (Input.touchCount > 0)
+        {
+            HandleTouchInput();
+        }
+        else
+        {
+            HandleMouseInput();
+        }
+
+        UpdateScore();
+    }
+
+    void HandleMouseInput()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            HandleInputInPixelCoordinated(Input.mousePosition);
+        }
+    }   
+    
+    void HandleTouchInput()
+    {
+        foreach(Touch touch in Input.touches)
+        {
+            HandleInputInPixelCoordinated(touch.position);
+        }
+    }
+
+    void HandleInputInPixelCoordinated(Vector2 pixelPos)
+    {
+        Debug.Log(pixelPos.ToString());
+
+        if (pixelPos.y < (0.3f * Screen.height))
+        {
+            // bottom
+            players[0].HandleInput();
+        }
+        else if (pixelPos.y < (0.6f * Screen.height))
+        {
+            // middle
+            players[1].HandleInput();
+        }
+        else
+        {
+            // top
+            players[2].HandleInput();
+        }
+    }
+
+
+    void UpdateScore()
+    {
+        currScore += Time.deltaTime;
+        hud.UpdateScore(Mathf.FloorToInt(currScore));
+    }
 }
 
 

@@ -10,7 +10,9 @@ public class MainMenu : MenuBase
 
     public override void SwitchState(bool stateEnable)
     {
-        mainMenuOverlay.SetActive(stateEnable);
+        if(mainMenuOverlay)
+            mainMenuOverlay.SetActive(stateEnable);
+
         gameObject.SetActive(stateEnable);
     }
 
