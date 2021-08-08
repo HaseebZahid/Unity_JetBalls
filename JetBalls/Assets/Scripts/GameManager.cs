@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public SoundState soundState;
 
+    public ObjectSpawner[] objSpawners;
+    public BallMovement[] players;
+
     public static GameManager instance;
     private void Awake()
     {
@@ -14,7 +17,28 @@ public class GameManager : MonoBehaviour
         soundState = new SoundState();
     }
 
+    public void StartGame()
+    {
+        Time.timeScale = 1f;
 
+        foreach(ObjectSpawner objSpawner in objSpawners)
+        {
+            objSpawner.Reset();
+        }
+
+        foreach (BallMovement ballMovement in players)
+        {
+            ballMovement.Reset();
+        }
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("GameOver");
+        Time.timeScale = 0f;
+
+        MenuManager.instance.SwitchToMenu(MenuState.gamelose);
+    }
 
 }
 

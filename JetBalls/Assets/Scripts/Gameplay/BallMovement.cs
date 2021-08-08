@@ -18,4 +18,20 @@ public class BallMovement : MonoBehaviour
             posTweener.StartTween();
 
     }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log(gameObject.name + " collided with " + col.name);
+
+        if (col.name.Contains("Obstacle_"))
+        {
+            GameManager.instance.GameOver();
+        }
+    }
+
+    public void Reset()
+    {
+        posTweener.StopTween();
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(150, -30);
+    }
 }

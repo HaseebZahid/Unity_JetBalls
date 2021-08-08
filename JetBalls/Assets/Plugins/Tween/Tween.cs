@@ -47,6 +47,11 @@ public abstract class Tween : MonoBehaviour
         elapsedTime = 0f;
     }
 
+    public void StopTween()
+    {
+        isPlaying = false;
+    }
+
     protected void Update()
     {
         if (isPlaying)

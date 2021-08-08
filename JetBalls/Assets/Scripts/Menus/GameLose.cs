@@ -8,7 +8,7 @@ public class GameLose : MenuBase
 
     public override void SwitchState(bool stateEnable)
     {
-        throw new System.NotImplementedException();
+        gameObject.SetActive(stateEnable);
     }
 
     public void OnPressMainMenu()
@@ -17,6 +17,7 @@ public class GameLose : MenuBase
     }
     public void OnPressRestart()
     {
+        GameManager.instance.StartGame();
         MenuManager.instance.SwitchToMenu(MenuState.gameplay);
     }
 }
