@@ -522,6 +522,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posTweener: {fileID: 153531024}
+  tweenRotation: {fileID: 1104020230}
+  startPos: {x: 150, y: -30}
 --- !u!1 &220103569
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,6 +755,7 @@ MonoBehaviour:
   - {fileID: 1219625969}
   players:
   - {fileID: 153531025}
+  isPlaying: 0
 --- !u!1 &301216243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,7 +1691,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &602092201
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3974,7 +3977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1709699978
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4359,7 +4362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1873085162
 MonoBehaviour:
   m_ObjectHideFlags: 0

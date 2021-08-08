@@ -19,6 +19,7 @@ public class MainMenu : MenuBase
         switch((MainMenuButton) mainMenuButton)
         {
             case MainMenuButton.play:       //0
+                GameManager.instance.StartGame();
                 MenuManager.instance.SwitchToMenu(MenuState.gameplay);
                 break;
             case MainMenuButton.settings:   //1

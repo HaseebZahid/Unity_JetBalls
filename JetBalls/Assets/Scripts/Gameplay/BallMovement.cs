@@ -6,6 +6,9 @@ public class BallMovement : MonoBehaviour
 {
     
     public TweenRectTransformPosition posTweener;
+    public TweenRotation tweenRotation;
+
+    public Vector2 startPos = new Vector2(150, -30);
 
     private void Awake()
     {
@@ -32,6 +35,13 @@ public class BallMovement : MonoBehaviour
     public void Reset()
     {
         posTweener.StopTween();
-        GetComponent<RectTransform>().anchoredPosition = new Vector2(150, -30);
+        tweenRotation.StartTween();
+        GetComponent<RectTransform>().anchoredPosition = startPos;
+    }
+
+    public void StopMovement()
+    {
+        posTweener.StopTween();
+        tweenRotation.StopTween();
     }
 }

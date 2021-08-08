@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     public BallMovement[] players;
 
     public static GameManager instance;
+
+    public bool isPlaying = false;
+
     private void Awake()
     {
         instance = this;
@@ -20,8 +23,9 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         Time.timeScale = 1f;
+        isPlaying = true;
 
-        foreach(ObjectSpawner objSpawner in objSpawners)
+        foreach (ObjectSpawner objSpawner in objSpawners)
         {
             objSpawner.Reset();
         }
@@ -35,7 +39,19 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("GameOver");
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
+        isPlaying = false;
+
+
+        foreach (ObjectSpawner objSpawner in objSpawners)
+        {
+            objSpawner.StopMovement();
+        }
+
+        foreach (BallMovement ballMovement in players)
+        {
+            ballMovement.StopMovement();
+        }
 
         MenuManager.instance.SwitchToMenu(MenuState.gamelose);
     }

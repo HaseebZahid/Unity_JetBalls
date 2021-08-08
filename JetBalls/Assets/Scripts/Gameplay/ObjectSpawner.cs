@@ -14,6 +14,7 @@ public class ObjectSpawner : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.instance.isPlaying) return;
         
         HandleObstacleSpawn();
         HandleDifficulty();
@@ -85,6 +86,14 @@ public class ObjectSpawner : MonoBehaviour
         spawnTime_max = 15f;
 
         nextDifficultyChangeTime = Time.time + 5f;
-        nextSpawnTime = Time.time + Random.Range(spawnTime_min, spawnTime_max);
+        nextSpawnTime = Time.time + Random.Range(0f, 0.5f * (spawnTime_min + spawnTime_max));    //, spawnTime_max);
+    }
+
+    public void StopMovement()
+    {
+        foreach (RectTransform spawnedObject in spawnedObjects)
+        {
+            spawnedObject.GetComponent<Rigidbody2D>().simulated = false;
+        }
     }
 }
