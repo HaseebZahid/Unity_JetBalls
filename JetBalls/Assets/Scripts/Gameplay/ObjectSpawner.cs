@@ -27,10 +27,10 @@ public class ObjectSpawner : MonoBehaviour
             spawnTime_min -= 0.25f;
             spawnTime_max -= 0.5f;
 
-            spawnTime_min = Mathf.Max(3f, spawnTime_min);
-            spawnTime_max = Mathf.Max(7f, spawnTime_max);
+            spawnTime_min = Mathf.Max(2f, spawnTime_min);
+            spawnTime_max = Mathf.Max(4f, spawnTime_max);
 
-            nextDifficultyChangeTime = Time.time + 5f;
+            nextDifficultyChangeTime = Time.time + Random.Range(3f, 7f);
         }
     }
 
@@ -82,10 +82,10 @@ public class ObjectSpawner : MonoBehaviour
         }
         spawnedObjects.Clear();
 
-        spawnTime_min = 5f;
-        spawnTime_max = 15f;
+        spawnTime_min = 4f;
+        spawnTime_max = 8f;
 
-        nextDifficultyChangeTime = Time.time + 5f;
+        nextDifficultyChangeTime = Time.time + Random.Range(3f, 7f);
         nextSpawnTime = Time.time + Random.Range(0f, 0.5f * (spawnTime_min + spawnTime_max));    //, spawnTime_max);
     }
 

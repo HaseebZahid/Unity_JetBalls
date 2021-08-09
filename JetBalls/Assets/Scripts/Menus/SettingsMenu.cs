@@ -30,8 +30,8 @@ public class SettingsMenu : MenuBase
 
     public void ToggleSound()
     {
-        bool currentSoundState = GameManager.instance.soundState.isPlaying;
-        GameManager.instance.soundState.isPlaying = !currentSoundState;
+        bool currentSoundState = AudioManager.instance.soundState.isPlaying;
+        AudioManager.instance.soundState.isPlaying = !currentSoundState;
         UpdateIcons();
     }
 
@@ -48,6 +48,6 @@ public class SettingsMenu : MenuBase
         rusIcon.sprite = langValue == 1 ? rusOn : rusOff;
         spanIcon.sprite = langValue == 2 ? spanOn : spanOff;
 
-        soundIcon.sprite = GameManager.instance.soundState.isPlaying ? soundOn : soundOff;
+        soundIcon.sprite = AudioManager.instance.soundState.isPlaying ? soundOn : soundOff;
     }
 }

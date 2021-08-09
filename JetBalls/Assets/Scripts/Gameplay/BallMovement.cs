@@ -17,12 +17,11 @@ public class BallMovement : MonoBehaviour
         
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.M))
-            posTweener.StartTween();
-
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.M))
+    //        posTweener.StartTween();
+    //}
 
     public void HandleInput()
     {
@@ -32,6 +31,7 @@ public class BallMovement : MonoBehaviour
         if (posTweener.IsPlaying)
             return;
 
+        AudioManager.instance.PlayJump();
         posTweener.StartTween();
     }
 
@@ -43,6 +43,7 @@ public class BallMovement : MonoBehaviour
         {
             GameManager.instance.GameOver();
             effectsTween.StartTween();
+            AudioManager.instance.PlayHit();
         }
     }
 

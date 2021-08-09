@@ -6,8 +6,6 @@ public class GameManager : MonoBehaviour
 {
     public HUD hud;
 
-    public SoundState soundState;
-
     public ObjectSpawner[] objSpawners;
     public BallMovement[] players;
 
@@ -19,7 +17,6 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
 
-        soundState = new SoundState();
     }
 
     public float currScore = 0f;
@@ -40,6 +37,8 @@ public class GameManager : MonoBehaviour
         {
             ballMovement.Reset();
         }
+
+        AudioManager.instance.SetMusicState(true);
     }
 
     public void GameOver()
@@ -47,7 +46,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameOver");
         //Time.timeScale = 0f;
         isPlaying = false;
-
+        AudioManager.instance.SetMusicState(false);
 
         foreach (ObjectSpawner objSpawner in objSpawners)
         {
@@ -124,28 +123,3 @@ public class GameManager : MonoBehaviour
     }
 }
 
-
-public class SoundState
-{
-    const string soundStr = "soundState";
-
-    int m_isPlaying = 1;
-
-    public bool isPlaying
-    {
-        get
-        {
-            return m_isPlaying == 1;
-        }
-        set
-        {
-            m_isPlaying = value ? 1 : 0;
-            PlayerPrefs.SetInt(soundStr, m_isPlaying);
-        }
-    }
-
-    public SoundState()
-    {
-        m_isPlaying = PlayerPrefs.GetInt(soundStr, 1);
-    }
-}
