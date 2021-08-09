@@ -49,5 +49,7 @@ public class SettingsMenu : MenuBase
         spanIcon.sprite = langValue == 2 ? spanOn : spanOff;
 
         soundIcon.sprite = AudioManager.instance.soundState.isPlaying ? soundOn : soundOff;
+
+        AudioManager.instance.UpdateSound();
     }
 }
