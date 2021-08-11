@@ -10,8 +10,14 @@ public class ImageUpdaterOnLanguagePreference : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-        GetComponent<Image>().sprite = images[LanguagePreference.instance.langValue];
-        GetComponent<Image>().SetNativeSize();
+        if (LanguagePreference.instance)
+        {
+            GetComponent<Image>().sprite = images[LanguagePreference.instance.langValue];
+            GetComponent<Image>().SetNativeSize();
+        } else
+        {
+            Invoke("OnEnable", 0.01f);
+        }
     }
 
     private void Update()

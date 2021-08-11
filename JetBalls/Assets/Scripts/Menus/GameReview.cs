@@ -37,6 +37,6 @@ public class GameReview : MenuBase
 
     public void OnReviewButtonPress()
     {
-
+        inputFieldText.text = "";
     }
 }
